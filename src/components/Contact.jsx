@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Code, Briefcase, MessageCircle, Check } from 'lucide-react';
+import { Mail, Github, Briefcase, MessageCircle, Check } from 'lucide-react';
 import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -89,7 +89,7 @@ const Contact = () => {
               </p>
             </div>
             <div className="social-links">
-              <a href="#" className="social-icon"><Code /></a>
+              <a href="https://github.com/SayantanS01/Portfolio" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub Repository"><Github /></a>
               <a href="#" className="social-icon"><Briefcase /></a>
               <a href="#" className="social-icon"><MessageCircle /></a>
             </div>
