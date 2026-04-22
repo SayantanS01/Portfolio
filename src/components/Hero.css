@@ -1,0 +1,108 @@
+.hero-section {
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 50px;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.9;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+  max-width: 700px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-image-wrapper {
+  flex: 0 0 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-profile-container {
+  width: 300px;
+  height: 400px; /* Portrait/Passport aspect ratio to fit the face better */
+  border-radius: 12px;
+  overflow: hidden;
+  border: none; /* Transparent/No thick border */
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px; /* Creates a cool floating thin frame */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.hero-profile-container:hover {
+  transform: scale(1.03) translateY(-10px);
+  box-shadow: 0 20px 45px var(--accent-primary);
+}
+
+.hero-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* Ensures the top (face/head) is prioritized and not cropped */
+  transition: transform 0.5s ease;
+}
+
+.hero-profile-container:hover .hero-profile-image {
+  transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    margin-top: 80px;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-image-wrapper {
+    margin-bottom: 40px;
+  }
+  .hero-profile-container {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+  }
+}
