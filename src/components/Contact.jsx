@@ -16,8 +16,8 @@ const Contact = () => {
     setStatus("submitting");
     const formData = new FormData(event.target);
 
-    // Provide placeholder, user needs to get key
-    formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
+    // Use environment variable for the access key
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
