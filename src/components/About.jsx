@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePortfolio } from '../context/PortfolioContext';
 import './About.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const { portfolioData } = usePortfolio();
+  const { about } = portfolioData;
   const aboutRef = useRef(null);
 
   useEffect(() => {
@@ -38,14 +41,14 @@ const About = () => {
         <div className="about-content">
           <div className="about-text glass-panel animate-up">
             <p>
-              A highly motivated and adaptable Computer Science graduate with a strong foundation in software development, data structures, and algorithms. Proficient in languages such as Python and Java, with hands-on experience in building web applications through academic projects. Possesses a strong aptitude for mastering new technologies and is eager to apply this skill to become a valuable asset to your team.
+              {about.description}
             </p>
           </div>
           
           <div className="skills-container glass-panel animate-up">
             <h3>Core Skills</h3>
             <div className="skills-grid">
-              {['Python', 'Java', 'C', 'SQL', 'JavaScript', 'React.js', 'Next.js', 'Node.js', 'Tailwind CSS'].map((skill) => (
+              {about.skills.map((skill) => (
                 <div key={skill} className="skill-tag">{skill}</div>
               ))}
             </div>
@@ -56,7 +59,7 @@ const About = () => {
             <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '1rem', lineHeight: '1.6' }}>
               Want to know more about my experience and academic background? You can view or download my full curriculum vitae.
             </p>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">View / Download CV</a>
+            <a href={about.resumeLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline">View / Download CV</a>
           </div>
         </div>
       </div>

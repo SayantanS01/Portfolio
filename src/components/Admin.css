@@ -1,0 +1,263 @@
+.admin-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 30px;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: var(--accent-primary, #00f0ff);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.hint {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* Dashboard Layout */
+.admin-dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  padding: 30px;
+  background: var(--bg-primary);
+}
+
+.admin-nav {
+  height: calc(100vh - 60px);
+  position: sticky;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.admin-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.admin-nav-header h2 {
+  font-size: 1.2rem;
+  font-family: 'Syncopate', sans-serif;
+  letter-spacing: 2px;
+}
+
+.admin-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.admin-nav-links button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.admin-nav-links button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.admin-nav-links button.active {
+  background: var(--accent-primary, #00f0ff);
+  color: #000;
+  font-weight: 600;
+}
+
+.admin-main {
+  max-width: 900px;
+}
+
+.admin-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.admin-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.project-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mini-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-preview-info h4 {
+  margin: 0 0 5px 0;
+}
+
+.tech-list {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.visible {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+}
+
+.toggle-btn.hidden {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+.skills-grid-admin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.skill-tag-admin {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.skill-tag-admin button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+}
+
+.skill-tag-admin button:hover {
+  color: #ff4d4d;
+}
+
+.content-form {
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.admin-footer-info {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+  .admin-dashboard {
+    grid-template-columns: 1fr;
+  }
+  .admin-nav {
+    height: auto;
+    position: relative;
+    top: 0;
+  }
+}

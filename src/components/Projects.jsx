@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Code } from 'lucide-react';
+import { usePortfolio } from '../context/PortfolioContext';
 import './Projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/*
 const projectData = [
   {
     id: 1,
@@ -53,8 +55,11 @@ const projectData = [
     live: 'https://love-con.vercel.app/'
   }
 ];
+*/
 
 const Projects = () => {
+  const { portfolioData } = usePortfolio();
+  const projects = portfolioData.projects.filter(p => p.isVisible !== false);
   const projectsRef = useRef(null);
 
   useEffect(() => {
@@ -77,7 +82,7 @@ const Projects = () => {
     }, projectsRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [projects]);
 
   return (
     <section id="projects" className="section projects-section" ref={projectsRef}>
@@ -87,7 +92,7 @@ const Projects = () => {
         </h2>
         
         <div className="projects-grid">
-          {projectData.map((project) => (
+          {projects.map((project) => (
             <div key={project.id} className="project-card glass-panel">
               <div className="project-image">
                 <img src={project.image} alt={project.title} />

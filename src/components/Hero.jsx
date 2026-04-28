@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { usePortfolio } from '../context/PortfolioContext';
 import './Hero.css';
 
 const Hero = () => {
+  const { portfolioData } = usePortfolio();
+  const { hero } = portfolioData;
   const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -51,23 +54,22 @@ const Hero = () => {
       <div className="container hero-container">
         <div className="hero-content">
           <h1 ref={titleRef} className="hero-title">
-            Sayantan <br />
-            <span className="text-gradient">Sarkar</span>
+            {hero.name} <br />
+            <span className="text-gradient">{hero.surname}</span>
           </h1>
           <p ref={subtitleRef} className="hero-subtitle">
-            A highly motivated Computer Science graduate with a strong foundation in software development. 
-            Proficient in modern web technologies and eager to build scalable applications.
+            {hero.subtitle}
           </p>
           <div ref={btnRef} className="hero-actions">
             <a href="#projects" className="btn btn-primary">View My Work</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Download CV</a>
+            <a href={hero.resumeLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline">Download CV</a>
             <a href="#contact" className="btn btn-outline">Contact Me</a>
           </div>
         </div>
         
         <div className="hero-image-wrapper" ref={imageRef}>
           <div className="hero-profile-container">
-            <img src="/profile.jpg" alt="Sayantan Sarkar" className="hero-profile-image" />
+            <img src={hero.profileImage} alt={`${hero.name} ${hero.surname}`} className="hero-profile-image" />
           </div>
         </div>
       </div>

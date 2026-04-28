@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Background3D from './components/Background3D';
+import Admin from './components/Admin';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -27,28 +29,33 @@ function App() {
   }, [theme]);
 
   return (
-    <>
-      <div className="theme-switcher">
-        {themes.map(t => (
-          <div 
-            key={t.id}
-            className={`theme-dot ${theme === t.id ? 'active' : ''}`}
-            style={{ backgroundColor: t.color }}
-            onClick={() => setTheme(t.id)}
-            title={`${t.label} Theme`}
-          />
-        ))}
-      </div>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <div className="theme-switcher">
+            {themes.map(t => (
+              <div 
+                key={t.id}
+                className={`theme-dot ${theme === t.id ? 'active' : ''}`}
+                style={{ backgroundColor: t.color }}
+                onClick={() => setTheme(t.id)}
+                title={`${t.label} Theme`}
+              />
+            ))}
+          </div>
 
-      <Background3D theme={theme} />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-      </main>
-    </>
+          <Background3D theme={theme} />
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+          </main>
+        </>
+      } />
+      <Route path="/admin" element={<Admin />} />
+    </Routes>
   );
 }
 
