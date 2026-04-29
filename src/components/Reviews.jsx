@@ -71,7 +71,7 @@ const Reviews = () => {
           <div className="review-form-container glass-panel">
             <h3>Submit Your Review</h3>
             <p>Your review will be sent directly to me for approval before appearing on the site.</p>
-            <form className="review-form" onSubmit={onSubmitReview}>
+            <form className="review-form" onSubmit={onSubmitReview} encType="multipart/form-data">
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="reviewer-name">Your Name</label>
@@ -90,6 +90,12 @@ const Reviews = () => {
                 <div className="form-group">
                   <label htmlFor="project-link">Project Link (Optional)</label>
                   <input type="url" id="project-link" name="link" placeholder="https://..." />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="reviewer-photo">Your Photo (Optional)</label>
+                  <input type="file" id="reviewer-photo" name="attachment" accept="image/*" />
                 </div>
                 <div className="form-group" style={{ flex: '0.5' }}>
                   <label htmlFor="rating">Rating (1-5)</label>
