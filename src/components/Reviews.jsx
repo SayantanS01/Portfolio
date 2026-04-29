@@ -15,7 +15,7 @@ const Reviews = () => {
     const formData = new FormData(event.target);
     
     // Add access key and custom subject
-    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    formData.append("access_key", import.meta.env.VITE_REVIEWS_ACCESS_KEY);
     formData.append("subject", "New Client Review Submission - Portfolio");
 
     try {
