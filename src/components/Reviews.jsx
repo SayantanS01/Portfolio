@@ -150,8 +150,8 @@ const Reviews = () => {
                 
                 <div className="review-footer">
                   <span className="project-label">Project:</span>
-                  <a href={review.websiteLink} target="_blank" rel="noopener noreferrer" className="project-link">
-                    {review.websiteName} ↗
+                  <a href={review.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                    {review.project} ↗
                   </a>
                 </div>
               </div>
