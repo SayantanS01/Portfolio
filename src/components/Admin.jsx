@@ -23,14 +23,14 @@ const Admin = () => {
   const handleReviewAdd = (review) => {
     updatePortfolioData({
       ...portfolioData,
-      reviews: [...portfolioData.reviews, { ...review, id: Date.now() }]
+      reviews: [...(portfolioData.reviews || []), { ...review, id: Date.now() }]
     });
   };
 
   const handleReviewRemove = (id) => {
     updatePortfolioData({
       ...portfolioData,
-      reviews: portfolioData.reviews.filter(r => r.id !== id)
+      reviews: (portfolioData.reviews || []).filter(r => r.id !== id)
     });
   };
 
@@ -221,7 +221,7 @@ const Admin = () => {
               </form>
             </div>
             <div className="admin-reviews-list">
-              {portfolioData.reviews.map(review => (
+              {(portfolioData.reviews || []).map(review => (
                 <div key={review.id} className="admin-review-item glass-panel">
                   <div className="review-preview-info">
                     <img src={review.photo} alt={review.name} className="mini-thumb" />
@@ -235,7 +235,7 @@ const Admin = () => {
                   </button>
                 </div>
               ))}
-              {portfolioData.reviews.length === 0 && <p>No reviews posted yet.</p>}
+              {(portfolioData.reviews || []).length === 0 && <p>No reviews posted yet.</p>}
             </div>
           </div>
         )}
