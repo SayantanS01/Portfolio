@@ -1,0 +1,155 @@
+.reviews-section {
+  padding-top: 150px;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.review-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-card::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 8rem;
+  color: var(--border-color);
+  opacity: 0.3;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.reviewer-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-primary);
+}
+
+.reviewer-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reviewer-info h3 {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+.reviewer-info p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  margin-top: 5px;
+}
+
+.star {
+  color: var(--border-color);
+  font-size: 1.2rem;
+}
+
+.star.filled {
+  color: #fbbf24; /* Golden yellow for filled stars */
+}
+
+.review-body {
+  position: relative;
+  z-index: 1;
+}
+
+.review-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-link {
+  color: var(--accent-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .review-card {
+    padding: 30px 20px;
+  }
+  
+  .review-text {
+    font-size: 1rem;
+  }
+  
+  .review-card::before {
+    font-size: 6rem;
+    right: 20px;
+  }
+}
