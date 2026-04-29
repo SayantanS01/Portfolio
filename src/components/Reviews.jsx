@@ -88,6 +88,10 @@ const Reviews = () => {
                   <input type="text" id="project-name" name="project" required />
                 </div>
                 <div className="form-group">
+                  <label htmlFor="project-link">Project Link (Optional)</label>
+                  <input type="url" id="project-link" name="link" placeholder="https://..." />
+                </div>
+                <div className="form-group" style={{ flex: '0.5' }}>
                   <label htmlFor="rating">Rating (1-5)</label>
                   <input type="number" id="rating" name="rating" min="1" max="5" defaultValue="5" required />
                 </div>
