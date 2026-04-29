@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Reviews.css';
 
 const Reviews = () => {
   // Empty array for real reviews to be added later
   const reviews = [];
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [result, setResult] = useState("");
+  const [status, setStatus] = useState("idle");
+
+  const onSubmitReview = async (event) => {
+    event.preventDefault();
+    setStatus("submitting");
+    const formData = new FormData(event.target);
+    
+    // Add access key and custom subject
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New Client Review Submission - Portfolio");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Review Submitted Successfully! It will be posted after approval.");
+        setStatus("success");
+        event.target.reset();
+        
+        setTimeout(() => {
+          setStatus("idle");
+          setResult("");
+          setIsFormOpen(false);
+        }, 5000);
+      } else {
+        setResult(data.message);
+        setStatus("idle");
+      }
+    } catch (error) {
+      setResult("Something went wrong!");
+      setStatus("idle");
+    }
+  };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -20,7 +60,61 @@ const Reviews = () => {
   return (
     <section id="reviews" className="section reviews-section">
       <div className="container">
-        <h2 className="section-title">Client <span className="text-gradient">Reviews</span></h2>
+        <div className="reviews-header-container">
+          <h2 className="section-title">Client <span className="text-gradient">Reviews</span></h2>
+          <button className="btn btn-outline" onClick={() => setIsFormOpen(!isFormOpen)}>
+            {isFormOpen ? 'Close Form' : 'Leave a Review'}
+          </button>
+        </div>
+        
+        {isFormOpen && (
+          <div className="review-form-container glass-panel">
+            <h3>Submit Your Review</h3>
+            <p>Your review will be sent directly to me for approval before appearing on the site.</p>
+            <form className="review-form" onSubmit={onSubmitReview}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="reviewer-name">Your Name</label>
+                  <input type="text" id="reviewer-name" name="name" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="reviewer-role">Your Role / Company</label>
+                  <input type="text" id="reviewer-role" name="role" required />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="project-name">Project Name</label>
+                  <input type="text" id="project-name" name="project" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="rating">Rating (1-5)</label>
+                  <input type="number" id="rating" name="rating" min="1" max="5" defaultValue="5" required />
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="review-text">Review</label>
+                <textarea id="review-text" name="review" rows="4" required></textarea>
+              </div>
+              
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+              <button 
+                type="submit" 
+                className="btn btn-primary" 
+                disabled={status === "submitting" || status === "success"}
+              >
+                {status === "submitting" ? "Submitting..." : status === "success" ? "Submitted!" : "Submit Review"}
+              </button>
+              
+              {result && (
+                <p style={{ marginTop: '10px', color: status === 'success' ? '#4ade80' : '#ef4444' }}>
+                  {result}
+                </p>
+              )}
+            </form>
+          </div>
+        )}
         
         {reviews.length > 0 ? (
           <div className="reviews-list">
