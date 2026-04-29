@@ -72,7 +72,7 @@ export const defaultPortfolioData = {
       link: "https://example.com",
       rating: 5,
       text: "Sayantan built the most amazing and magical birthday website for me. The 3D animations and the themes were absolutely breathtaking. It was the best surprise I could have ever asked for!",
-      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
+      photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     }
   ]
 };

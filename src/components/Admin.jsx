@@ -204,7 +204,7 @@ const Admin = () => {
                   link: formData.get('link'),
                   rating: parseInt(formData.get('rating')),
                   text: formData.get('text'),
-                  photo: formData.get('photo') || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop'
+                  photo: formData.get('photo') || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
                 });
                 e.target.reset();
               }}>
