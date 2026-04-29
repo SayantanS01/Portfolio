@@ -62,5 +62,6 @@ export const defaultPortfolioData = {
       live: 'https://love-con.vercel.app/',
       isVisible: false // Hidden as requested
     }
-  ]
+  ],
+  reviews: []
 };

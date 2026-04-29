@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { usePortfolio } from '../context/PortfolioContext';
 import './Reviews.css';
 
 const Reviews = () => {
-  // Empty array for real reviews to be added later
-  const reviews = [];
+  const { portfolioData } = usePortfolio();
+  const reviews = portfolioData.reviews || [];
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [result, setResult] = useState("");
   const [status, setStatus] = useState("idle");

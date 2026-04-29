@@ -12,12 +12,26 @@ const Admin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === 'admin123') { // Simple password for now
+    if (password === 'Admin@S7990') { // Updated password
       setIsLoggedIn(true);
       setError('');
     } else {
       setError('Invalid password');
     }
+  };
+
+  const handleReviewAdd = (review) => {
+    updatePortfolioData({
+      ...portfolioData,
+      reviews: [...portfolioData.reviews, { ...review, id: Date.now() }]
+    });
+  };
+
+  const handleReviewRemove = (id) => {
+    updatePortfolioData({
+      ...portfolioData,
+      reviews: portfolioData.reviews.filter(r => r.id !== id)
+    });
   };
 
   const handleProjectToggle = (id) => {
@@ -73,7 +87,7 @@ const Admin = () => {
             {error && <p className="error-text">{error}</p>}
             <button type="submit" className="btn btn-primary">Login</button>
           </form>
-          <p className="hint">Hint: admin123</p>
+          <p className="hint">Hint: Admin@S7990</p>
         </div>
       </div>
     );
@@ -100,6 +114,12 @@ const Admin = () => {
             onClick={() => setActiveTab('skills')}
           >
             Skills
+          </button>
+          <button 
+            className={activeTab === 'reviews' ? 'active' : ''} 
+            onClick={() => setActiveTab('reviews')}
+          >
+            Reviews
           </button>
           <button 
             className={activeTab === 'content' ? 'active' : ''} 
@@ -165,6 +185,57 @@ const Admin = () => {
                   <button onClick={() => handleRemoveSkill(skill)}><Trash2 size={12} /></button>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'reviews' && (
+          <div className="admin-section animate-fade-in">
+            <h3>Manage Reviews</h3>
+            <div className="add-review-form glass-panel" style={{ marginBottom: '30px', padding: '20px' }}>
+              <h4>Add New Approved Review</h4>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                handleReviewAdd({
+                  name: formData.get('name'),
+                  role: formData.get('role'),
+                  project: formData.get('project'),
+                  link: formData.get('link'),
+                  rating: parseInt(formData.get('rating')),
+                  text: formData.get('text'),
+                  photo: formData.get('photo') || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop'
+                });
+                e.target.reset();
+              }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+                  <input name="name" placeholder="Client Name" className="admin-input" required />
+                  <input name="role" placeholder="Role/Company" className="admin-input" required />
+                  <input name="project" placeholder="Project Name" className="admin-input" required />
+                  <input name="link" placeholder="Project Link" className="admin-input" />
+                  <input name="rating" type="number" min="1" max="5" defaultValue="5" className="admin-input" required />
+                  <input name="photo" placeholder="Photo URL (Optional)" className="admin-input" />
+                </div>
+                <textarea name="text" placeholder="Review Text" className="admin-input" rows="3" style={{ marginBottom: '15px' }} required />
+                <button type="submit" className="btn btn-primary btn-sm">Add Review</button>
+              </form>
+            </div>
+            <div className="admin-reviews-list">
+              {portfolioData.reviews.map(review => (
+                <div key={review.id} className="admin-review-item glass-panel">
+                  <div className="review-preview-info">
+                    <img src={review.photo} alt={review.name} className="mini-thumb" />
+                    <div>
+                      <h4>{review.name} ({review.rating}★)</h4>
+                      <p className="tech-list">{review.project}</p>
+                    </div>
+                  </div>
+                  <button onClick={() => handleReviewRemove(review.id)} className="btn-icon text-error">
+                    <Trash2 size={18} />
+                  </button>
+                </div>
+              ))}
+              {portfolioData.reviews.length === 0 && <p>No reviews posted yet.</p>}
             </div>
           </div>
         )}
