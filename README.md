@@ -1,16 +1,35 @@
-# React + Vite
+# Sayantan Sarkar — 3D Cloud Engineering Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cinematic, scroll-driven portfolio built with React, Three.js via React Three Fiber, Drei, GSAP, and ScrollTrigger.
 
-Currently, two official plugins are available:
+## Highlights
+- Scroll-reactive 3D centerpiece and orbital rings
+- GSAP section reveals and scroll progress indicator
+- Personal profile, education, cloud projects, technical toolkit, and contact section
+- Project write-ups linked to the supplied LinkedIn posts
+- Downloadable CV at `public/resume.pdf`
+- Responsive layout and reduced-motion support
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
+Requires Node.js 18+ and npm.
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Build and preview:
+```bash
+npm run build
+npm run preview
+```
 
-## Expanding the ESLint configuration
+## Personal links
+- GitHub: https://github.com/SayantanS01
+- LinkedIn: https://www.linkedin.com/in/sayantan-sarkar-3a544b269/
+- LinkedIn projects: https://www.linkedin.com/in/sayantan-sarkar-3a544b269/details/projects/
+- RPM package server project: https://lnkd.in/p/gau89uJE
+- Secure Apache/RHEL project: https://lnkd.in/p/guHtWN-C
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+Project descriptions are based on the CV text and LinkedIn project posts supplied for this update. Replace or add links if you publish separate repositories for these labs. The website uses a custom one-page layout and does not depend on the older site's admin/theme implementation.
